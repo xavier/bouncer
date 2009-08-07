@@ -1,26 +1,19 @@
 
 class Bouncer
 
-  #
-  #
-  #
-  
+  # See configure for available options
   def initialize(app, options = {})
     @app = app
     configure(options)
   end
   
-  #
-  #
-  #
-  #
+  # Accepted options are: :deny_user_agents and :deny_ip_address
+  # Both accept a single or an array of String, Regexp or Proc objects
+  # If a string is given, IP address will be matched by prefix (i.e. '127.0' will match '127.0.0.1' and '127.0.2.1')
   def configure(options = {})
     @user_agent_checks = [options[:deny_user_agent]].flatten.compact
     @ip_address_checks = [options[:deny_ip_address]].flatten.compact
   end
-  
-  attr_reader :user_agent_checks
-  attr_reader :ip_address_checks
   
   def call(env)
     dup._call(env)
@@ -72,6 +65,10 @@ class Bouncer
       false
     end    
   end
+
+  # Used for testing
+  attr_reader :user_agent_checks
+  attr_reader :ip_address_checks
 
   protected
   

@@ -1,25 +1,31 @@
 = Bouncer
 
-A simple, no fluff, blacklist based access filtering middleware for Rack.  It allows for easy filtering of IP addresses
-and User Agent strings
+A simple blacklist based access filtering middleware for Rack.  
+
+It allows for easy filtering of IP addresses and User Agent strings.
+This filter is primarily aimed at quickly blocking abusive users or bots.  
+It is suitable for websites with moderate traffic suffering from a handful of abusive clients and 
+will come handy for anyone who doesn't want to fiddle with obscure web server configuration directives.
 
 == Usage
 
 For instance, to add this middleware to your Rails app, add this to <tt>environment.rb</tt>:
 
-  middleware.add 'Bouncer', :deny_ip_address => ["1.2.3.4", /^10\.0\./], :deny_user_agent => /msnbot/
-	
+  config.middleware.add 'Bouncer', :deny_ip_address => ["1.2.3.4", /^10\.0\./], :deny_user_agent => /msnbot/
+
+The black list can be either a single or an array with a combination of strings, regular expressions and Proc objects.
+If any of the given conditions are met, the client will be greeted with an HTTP 403 response (access denied).
 
 
 == Similar Middleware
 
 If you are after more advanced features, you may want to have a look at:
 
-- <a href="http://github.com/bpalmen/httpbl/tree/master)">HttpBL</a>, an advanced IP filtering middleware
-- <a href="http://github.com/bebanjo/rack-useragent/tree/master">rack-useragent</a>, another User Agent filter
-- <a href="http://github.com/sunlightlabs/rack-honeypot/tree/master">rack-honeypot</a>, a spambot trap
+- {HttpBL}[http://github.com/bpalmen/httpbl/tree/master], an advanced IP filtering middleware
+- {rack-useragent}[http://github.com/bebanjo/rack-useragent/tree/master], another User Agent filter
+- {rack-honeypot}[http://github.com/sunlightlabs/rack-honeypot/tree/master], a spambot trap
 
-If you are seriously under attack, you may want to have a look at <a href="http://www.modsecurity.org/">ModSecurity</a>.
+If you are seriously under attack, you may want to have a look at {ModSecurity}[http://www.modsecurity.org/].
 
 == MIT Licence
 
