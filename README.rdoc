@@ -9,8 +9,12 @@ will come handy for anyone who doesn't want to fiddle with obscure web server co
 
 == Usage
 
-For instance, to add this middleware to your Rails app, add this to <tt>environment.rb</tt>:
+For instance, to add this middleware to your Rails app, in <tt>environment.rb</tt>:
 
+  # Require the gem, use rake gems:install to install it
+  config.gem 'xavier-bouncer', :lib => 'bouncer', :source => 'http://gems.github.com'
+
+  # Add the middleware to the stack and configure it
   config.middleware.add 'Bouncer', :deny_ip_address => ["1.2.3.4", /^10\.0\./], :deny_user_agent => /msnbot/
 
 The black list can be either a single or an array with a combination of strings, regular expressions and Proc objects.

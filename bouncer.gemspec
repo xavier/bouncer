@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   
   s.authors  = ['Xavier Defrang']
   s.email    = 'xavier.defrang@gmail.com'
-  s.homepage = 'http://github.com/xavier/bouncer/'
+  s.homepage = 'http://github.com/xavier/bouncer'
   
   s.has_rdoc = true
   s.rdoc_options = ['--main', 'README.rdoc']
