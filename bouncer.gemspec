@@ -15,6 +15,6 @@ Gem::Specification.new do |s|
   s.rdoc_options << '--inline-source' << '--charset=UTF-8'
   s.extra_rdoc_files = ['README.rdoc']
   
-  s.files = %w(Rakefile README.rdoc lib/bouncer.rb test/bouncer_test.rb)
+  s.files = %w(README.rdoc lib/bouncer.rb test/bouncer_test.rb)
   s.test_files = %w(test/bouncer_test.rb)
 end
